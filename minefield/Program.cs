@@ -10,11 +10,11 @@ namespace MinefieldGame
             var field = new CellType[,]
             {
                 {CellType.Bomb, CellType.StartOrEnd, CellType.Bomb, CellType.Bomb, CellType.Bomb},
-                {CellType.Bomb, CellType.Path, CellType.Bomb, CellType.Bomb, CellType.Bomb},
-                {CellType.Bomb, CellType.Bomb, CellType.Path, CellType.Bomb, CellType.Bomb},
-                {CellType.Bomb, CellType.Bomb, CellType.Bomb, CellType.Path, CellType.Bomb},
-                {CellType.Bomb, CellType.Bomb, CellType.Bomb, CellType.Path, CellType.Bomb},
-                {CellType.Bomb, CellType.Bomb, CellType.Path, CellType.Bomb, CellType.Bomb},
+                {CellType.Safe, CellType.Safe, CellType.Bomb, CellType.Bomb, CellType.Safe},
+                {CellType.Bomb, CellType.Bomb, CellType.Safe, CellType.Bomb, CellType.Safe},
+                {CellType.Safe, CellType.Bomb, CellType.Bomb, CellType.Safe, CellType.Bomb},
+                {CellType.Bomb, CellType.Safe, CellType.Bomb, CellType.Safe, CellType.Bomb},
+                {CellType.Safe, CellType.Bomb, CellType.Safe, CellType.Bomb, CellType.Bomb},
                 {CellType.Bomb, CellType.Bomb, CellType.StartOrEnd, CellType.Bomb, CellType.Bomb}
             };
 

@@ -38,18 +38,18 @@ namespace MinefieldGame
                     int nx = curr.x + dx[dir];
                     int ny = curr.y + dy[dir];
 
-                    if (!minefield.IsInBounds(nx, ny) || visited[nx, ny])
+                    if (!minefield.IsInBounds(nx, ny))
                         continue;
 
-                    bool isTargetEnd = (nx == end.x && ny == end.y);
-                    bool isPathCell = (minefield[nx, ny] == CellType.Path);
-
-                    if (!isTargetEnd && !isPathCell)
+                    if (visited[nx, ny])
                         continue;
 
-                    visited[nx, ny] = true;
-                    prev[nx, ny] = curr;
-                    queue.Enqueue((nx, ny));
+                    if (minefield.IsTraversable(nx, ny, end))
+                    {
+                        visited[nx, ny] = true;
+                        prev[nx, ny] = curr;
+                        queue.Enqueue((nx, ny));
+                    }
                 }
             }
 

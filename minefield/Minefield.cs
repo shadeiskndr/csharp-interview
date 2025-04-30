@@ -5,8 +5,8 @@ namespace MinefieldGame
     public enum CellType
     {
         Bomb = 0,
-        Path = 1,
-        StartOrEnd = 3
+        Safe = 1,
+        StartOrEnd = 2
     }
 
     public class Minefield
@@ -29,8 +29,10 @@ namespace MinefieldGame
         public bool IsTraversable(int x, int y, (int x, int y) end)
         {
             if (!IsInBounds(x, y)) return false;
+
             if ((x, y) == end) return field[x, y] == CellType.StartOrEnd;
-            return field[x, y] == CellType.Path;
+
+            return field[x, y] == CellType.Safe;
         }
     }
 }

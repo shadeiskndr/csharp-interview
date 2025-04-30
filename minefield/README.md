@@ -15,38 +15,38 @@ This project is a C# console application that simulates guiding a dog, **Sniffer
 - **Minefield Representation:**
   - `0` = bomb (cannot be stepped on)
   - `1` = safe path (traversable)
-  - `3` = designated start/end points (traversable only as the first or last step)
+  - `2` = designated start/end points (traversable only as the first or last step)
 - **SnifferPup's Pathfinding:**
-  - Starts at a cell marked `3`.
+  - Starts at a cell marked `2`.
   - Moves to adjacent cells (8 directions: up, down, left, right, and diagonals) marked `1`.
   - Can move adjacent to bombs (`0`), but cannot step onto them.
-  - Aims to reach the end cell marked `3`.
+  - Aims to reach the end cell marked `2`.
 - **Ally's Movement:**
   - Follows SnifferPup's path, always one step behind.
   - Never occupies the same cell as SnifferPup.
   - Never steps on a bomb (`0`). The path found ensures this.
 - **Path Existence:**
-  The algorithm finds _a_ path if one exists according to the rules (moving between `1`s from the start `3` to the end `3`, avoiding `0`s).
+  The algorithm finds _a_ path if one exists according to the rules (moving between `1`s from the start `2` to the end `2`, avoiding `0`s).
 
 ## Example
 
 Given the following minefield (used in `Program.cs`):
 
 ```
-[0, 3, 0, 0, 0],  // Start at (0, 1)
+[0, 2, 0, 0, 0],  // Start at (0, 1)
 [0, 1, 0, 0, 0],
 [0, 0, 1, 0, 0],
 [0, 0, 0, 1, 0],
 [0, 0, 0, 1, 0],
 [0, 0, 1, 0, 0],
-[0, 0, 3, 0, 0]   // End at (6, 2)
+[0, 0, 2, 0, 0]   // End at (6, 2)
 ```
 
-- `3` = start/end point
+- `2` = start/end point
 - `1` = safe path
 - `0` = bomb
 
-The program finds a safe path for SnifferPup and Ally from the start `3` at `(0, 1)` to the end `3` at `(6, 2)`. Note that the path cells (like `(1, 1)`) can be adjacent to bombs.
+The program finds a safe path for SnifferPup and Ally from the start `2` at `(0, 1)` to the end `2` at `(6, 2)`. Note that the path cells (like `(1, 1)`) can be adjacent to bombs.
 
 ## Project Structure
 
@@ -124,8 +124,8 @@ _(Note: The exact path steps between start and end might vary slightly depending
 ## Implementation Notes
 
 - Uses Breadth-First Search (BFS) to find the shortest path in terms of steps.
-- The path starts at a `3`, traverses adjacent `1`s (horizontally, vertically, or diagonally), and ends at the target `3`.
+- The path starts at a `2`, traverses adjacent `1`s (horizontally, vertically, or diagonally), and ends at the target `2`.
 - The pathfinding logic allows movement to cells adjacent to bombs (`0`), but prevents stepping directly onto a bomb.
 - Ensures Ally never steps on a bomb and never shares a cell with SnifferPup by following one step behind on the found path.
-- Easily customizable for different minefield layouts and start/end positions (marked as `3`).
+- Easily customizable for different minefield layouts and start/end positions (marked as `2`).
 - The codebase is modular and object-oriented, making it easy to extend and maintain.
